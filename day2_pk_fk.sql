@@ -43,7 +43,13 @@ constraint jhist_emp_id_fk foreign key (employee_id) references employees (emplo
 constraint jhist_dept_fk foreign key (department_id) references departments(department_id)
 );
 
+alter table departments
+    drop constraint dept_mgr_id;
 
+--DROP TABLE regions;
+    drop TABLE regions cascade constraints;
+
+    drop TABLE countries cascade constraints;
 
 
 
