@@ -1,46 +1,47 @@
-alter table regions add ( constraint reg_id_pk PRIMARY KEY (region_id) );
+/* Formatted on 19/08/2022 11:55:38 (QP5 v5.252.13127.32867) */
+ALTER TABLE regions ADD ( CONSTRAINT reg_id_pk PRIMARY KEY (region_id) );
 
 ALTER TABLE countries ADD (
     CONSTRAINT countr_reg_fk FOREIGN KEY ( region_id )
         REFERENCES regions ( region_id )
 );
 
-alter table countries add ( constraints countr_id_pk primary key(country_id)
+ALTER TABLE countries ADD ( CONSTRAINTS countr_id_pk PRIMARY KEY(country_id)
 );
 
-ALTER TABLE locations add(
-constraints loc_id_pk primary key (location_id), 
-constraints loc_c_id foreign key(country_id) references countries(country_id) );
+ALTER TABLE locations ADD(
+CONSTRAINTS loc_id_pk PRIMARY KEY (location_id),
+CONSTRAINTS loc_c_id FOREIGN KEY(country_id) REFERENCES countries(country_id) );
 
 ALTER TABLE DEPARTMENTS ADD (
 CONSTRAINT dp_id_pk PRIMARY KEY (department_id),
-constraint dep_loc_fk FOREIGN KEY (location_id) REFERENCES locations(location_id)
+CONSTRAINT dep_loc_fk FOREIGN KEY (location_id) REFERENCES locations(location_id)
 );
 
 --alter table departments add location_id number(4);
 
-alter table jobs add(
-constraints job_id_pk primary key (job_id)
+ALTER TABLE jobs ADD(
+CONSTRAINTS job_id_pk PRIMARY KEY (job_id)
 );
 
-alter table employees add (
+ALTER TABLE employees ADD (
 CONSTRAINT emp_emp_id_pk PRIMARY KEY (employee_id),
-constraint emp_dept_fk foreign key (department_id) references departments(department_id),
-constraint emp_job_fk foreign key (job_id) references jobs(job_id),
-constraint emp_manager_fk foreign key (manager_id) references employees(employee_id)
+CONSTRAINT emp_dept_fk FOREIGN KEY (department_id) REFERENCES departments(department_id),
+CONSTRAINT emp_job_fk FOREIGN KEY (job_id) REFERENCES jobs(job_id),
+CONSTRAINT emp_manager_fk FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
 );
 
 --alter table employees add department_id number(2);
 
-alter table departments add(
-constraint dept_mgr_id foreign key (manager_id) references employees (employee_id)
+ALTER TABLE departments ADD(
+CONSTRAINT dept_mgr_id FOREIGN KEY (manager_id) REFERENCES employees (employee_id)
 );
 
-alter table job_history add (
-constraint jhist_emp_id_st_date_pk primary key (employee_id, start_date),
-constraint jhist_job_id_fk foreign key (job_id) references jobs (job_id),
-constraint jhist_emp_id_fk foreign key (employee_id) references employees (employee_id),
-constraint jhist_dept_fk foreign key (department_id) references departments(department_id)
+ALTER TABLE job_history ADD (
+CONSTRAINT jhist_emp_id_st_date_pk PRIMARY KEY (employee_id, start_date),
+CONSTRAINT jhist_job_id_fk FOREIGN KEY (job_id) REFERENCES jobs (job_id),
+CONSTRAINT jhist_emp_id_fk FOREIGN KEY (employee_id) REFERENCES employees (employee_id),
+CONSTRAINT jhist_dept_fk FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );
 
 --alter table departments
@@ -50,6 +51,3 @@ constraint jhist_dept_fk foreign key (department_id) references departments(depa
     --drop TABLE regions cascade constraints;
 
     --drop TABLE countries cascade constraints;
-
-
-
