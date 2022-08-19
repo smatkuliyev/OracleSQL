@@ -26,7 +26,8 @@ CREATE TABLE departments
 (
    department_id     NUMBER (2),
    department_name   VARCHAR2 (30),
-   manager_id        NUMBER (4)
+   manager_id        NUMBER (4),
+   location_id       NUMBER(4)
 );
 
 --drop table departments;
@@ -51,6 +52,7 @@ CREATE TABLE employees
    salary           NUMBER (8, 2),
    commission_pct   NUMBER (2, 2),
    manager_id       NUMBER (6),
+   department_id    NUMBER (2),
    CONSTRAINT emp_salary_min CHECK (salary > 0),
    CONSTRAINT emp_email_uk UNIQUE (email)
 );

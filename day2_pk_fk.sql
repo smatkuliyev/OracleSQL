@@ -17,7 +17,7 @@ CONSTRAINT dp_id_pk PRIMARY KEY (department_id),
 constraint dep_loc_fk FOREIGN KEY (location_id) REFERENCES locations(location_id)
 );
 
-alter table departments add location_id number(4);
+--alter table departments add location_id number(4);
 
 alter table jobs add(
 constraints job_id_pk primary key (job_id)
@@ -30,7 +30,7 @@ constraint emp_job_fk foreign key (job_id) references jobs(job_id),
 constraint emp_manager_fk foreign key (manager_id) references employees(employee_id)
 );
 
-alter table employees add department_id number(2);
+--alter table employees add department_id number(2);
 
 alter table departments add(
 constraint dept_mgr_id foreign key (manager_id) references employees (employee_id)
@@ -43,13 +43,13 @@ constraint jhist_emp_id_fk foreign key (employee_id) references employees (emplo
 constraint jhist_dept_fk foreign key (department_id) references departments(department_id)
 );
 
-alter table departments
-    drop constraint dept_mgr_id;
+--alter table departments
+  --  drop constraint dept_mgr_id;
 
 --DROP TABLE regions;
-    drop TABLE regions cascade constraints;
+    --drop TABLE regions cascade constraints;
 
-    drop TABLE countries cascade constraints;
+    --drop TABLE countries cascade constraints;
 
 
 
