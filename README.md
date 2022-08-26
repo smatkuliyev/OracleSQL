@@ -1,0 +1,3 @@
+# OracleSQL
+
+Self study
